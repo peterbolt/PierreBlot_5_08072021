@@ -6,7 +6,7 @@ const fetchKanaps = async () => {
     .then((data) => (kanapData = data))
     .catch((error) => console.log(error));
 
-  console.log(kanapData);
+  console.table(kanapData);
 };
 
 const kanapDisplay = async () => {
