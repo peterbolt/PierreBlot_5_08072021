@@ -35,19 +35,18 @@ for (i = 0; i < productArray.length; i++) {
 function deleteItem() {
   document.querySelectorAll(".deleteItem").forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      let newProductArray = [];
-      productArray.map((produitsPanier) => {
+      for (let i = 0; i < productArray.length; i++) {
         if (
-          produitsPanier.id != e.target.dataset.id &&
-          produitsPanier.color != e.target.dataset.color
+          productArray[i].id === e.target.dataset.id &&
+          productArray[i].color === e.target.dataset.color
         ) {
-          newProductArray.push(produitsPanier);
+          productArray.splice(i, 1);
+          break;
         }
-      });
-      productArray = newProductArray;
+      }
       localStorage.setItem("panier", JSON.stringify(productArray));
-      console.log(productArray);
     });
+    document.location.reload();
   });
 }
 
