@@ -104,7 +104,7 @@ function changeQuantity() {
 //-------Prenom
 const validPrenom = function () {
   if (/^[A-Za-z\-]{3,20}$/.test(firstName.value)) {
-    firstNameErrorMsg.textContent = `Prénom valide`;
+    // firstNameErrorMsg.textContent = `Prénom valide`;
     return true;
   } else {
     firstNameErrorMsg.textContent = `Le prénom doit contenir entre 3 et 20 lettres et ne doit pas avoir de caractères spéciaux ou chiffres`;
@@ -114,7 +114,7 @@ const validPrenom = function () {
 //-------Nom
 const validNom = function () {
   if (/^[A-Za-z\-]{3,20}$/.test(lastName.value)) {
-    lastNameErrorMsg.textContent = `Nom valide`;
+    // lastNameErrorMsg.textContent = `Nom valide`;
     return true;
   } else {
     lastNameErrorMsg.textContent = `Le nom doit contenir entre 3 et 20 lettres et ne doit pas avoir de caractères spéciaux ou chiffres`;
@@ -124,7 +124,7 @@ const validNom = function () {
 //-------Adresse
 const validAdresse = function () {
   if (/^[A-Za-z0-9\s]{5,100}$/.test(address.value)) {
-    addressErrorMsg.textContent = `Adresse valide`;
+    // addressErrorMsg.textContent = `Adresse valide`;
     return true;
   } else {
     addressErrorMsg.textContent = `L'adresse doit contenir entre 5 et 100 caractères et ne doit pas avoir de caractères spéciaux`;
@@ -133,8 +133,8 @@ const validAdresse = function () {
 };
 //-------Ville
 const validVille = function () {
-  if (/^[A-Za-z]{3,20}$/.test(city.value)) {
-    cityErrorMsg.textContent = `Ville valide`;
+  if (/^[A-Za-z\ ]{3,20}$/.test(city.value)) {
+    // cityErrorMsg.textContent = `Ville valide`;
     return true;
   } else {
     cityErrorMsg.textContent = `La ville doit contenir entre 3 et 20 lettres et ne doit pas avoir de caractères spéciaux ou chiffres`;
@@ -144,7 +144,7 @@ const validVille = function () {
 //-------Email
 const validEmail = function () {
   if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email.value)) {
-    emailErrorMsg.textContent = `Email valide`;
+    // emailErrorMsg.textContent = `Email valide`;
     return true;
   } else {
     emailErrorMsg.textContent = `Erreur Email : Respectez les conventions (Exemple : john.doe@gmail.com)`;
@@ -220,10 +220,9 @@ function getFormInfo() {
           return response.json();
         })
         .then((data) => {
-          localStorage.setItem("orderId", data.orderId);
+          document.location.href = `confirmation.html?id=${data.orderId}`;
         });
     }
-    // location = "confirmation.html";
   });
 }
 
