@@ -2,6 +2,7 @@ let productParams = new URLSearchParams(document.location.search); // Récupère
 let productID = productParams.get("id"); // Prends l'ID dans les params
 const productURL = `http://localhost:3000/api/products/${productID}`; // retourne un nouvel URL avec l'ID
 
+// Va chercher le produit avec l'ID correspondant
 const fetchProduct = async () => {
   await fetch(productURL)
     .then((res) => res.json())
@@ -11,7 +12,7 @@ const fetchProduct = async () => {
     .catch((error) => console.log(error));
 };
 
-// fonction affiche le produit sur la page produit
+// Affiche le produit sur la page produit
 const displayProduct = async () => {
   await fetchProduct();
   document.title = products.name; // ajoute le nom du produit dans l'onglet
@@ -40,9 +41,9 @@ const displayProduct = async () => {
 displayProduct();
 //---------------------------------------
 
+// Ajout du produit au panier
 const ajoutPanierBtn = document.getElementById("addToCart");
 ajoutPanierBtn.addEventListener("click", (e) => {
-  // fetchProduct();
   let productArray = [];
   const choixCouleur = document.getElementById("colors").value;
   const choixNombre = document.getElementById("quantity").value;

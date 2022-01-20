@@ -1,14 +1,14 @@
-let = kanapData = [];
+let kanapData = [];
 
+// Appel de l'API
 const fetchKanaps = async () => {
   await fetch("http://localhost:3000/api/products")
     .then((res) => res.json())
     .then((data) => (kanapData = data))
     .catch((error) => console.log(error));
-
-  console.table(kanapData);
 };
 
+// Affichage des produits
 const kanapDisplay = async () => {
   await fetchKanaps();
 

@@ -1,5 +1,4 @@
 let productArray = JSON.parse(localStorage.getItem("panier"));
-
 const produitsPanier = document.getElementById("cart__items");
 
 //--- Gestion de l'affichage du panier
