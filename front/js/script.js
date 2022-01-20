@@ -1,4 +1,4 @@
-let = kanapData = [];
+let kanapData = [];
 
 const fetchKanaps = async () => {
   await fetch("http://localhost:3000/api/products")
