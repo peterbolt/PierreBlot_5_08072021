@@ -1,9 +1,9 @@
 let productParams = new URLSearchParams(document.location.search); // Récupère les params de l'URL
 let productID = productParams.get("id"); // Prends l'ID dans les params
-const productURL = `http://localhost:3000/api/products`; // retourne un nouvel URL avec l'ID
+const productURL = `http://localhost:3000/api/products/${productID}`; // retourne un nouvel URL avec l'ID
 
 const fetchProduct = async () => {
-  await fetch(`${productURL}/${productID}`)
+  await fetch(productURL)
     .then((res) => res.json())
     .then((data) => {
       products = data;
@@ -42,19 +42,20 @@ displayProduct();
 
 const ajoutPanierBtn = document.getElementById("addToCart");
 ajoutPanierBtn.addEventListener("click", (e) => {
+  // fetchProduct();
   let productArray = [];
   const choixCouleur = document.getElementById("colors").value;
   const choixNombre = document.getElementById("quantity").value;
   const choixID = products._id;
   const choixNom = products.name;
-  // const choixPrix = products.price;
+  const choixPrix = products.price;
   const choixImg = products.imageUrl;
   const choixImgAltTxt = products.altTxt;
   //-----
   let produitPanier = {
     id: choixID,
     name: choixNom,
-    // price: choixPrix,
+    price: choixPrix,
     color: choixCouleur,
     quantity: parseInt(choixNombre, 10),
     img: choixImg,
